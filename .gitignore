@@ -31,3 +31,4 @@ local.properties
 # Mac
 .DS_Store
 .DS_Store?
+.gitignore.txt
