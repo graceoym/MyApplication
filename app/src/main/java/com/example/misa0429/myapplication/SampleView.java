@@ -61,12 +61,10 @@ class SampleView extends View {
     }
 
     int r = new java.util.Random ().nextInt (4);
+    int playerX = lane[r];
 
     @Override
     public void onDraw(Canvas c) {
-
-
-        int playerX = lane[r];
 
         //数値処理
         playerY += playerVY;

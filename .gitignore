@@ -27,6 +27,7 @@ local.properties
 .idea/
 .gradle
 /local.properties
+build/
 
 # Mac
 .DS_Store
