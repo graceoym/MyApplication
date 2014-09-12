@@ -6,17 +6,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-
 public class MyActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Viewをセットする
-        setContentView(new SampleView(this));
+        view = new SampleView(this);
+        setContentView(view);
 
     }
 
+    SampleView view;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -32,6 +33,9 @@ public class MyActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+
+            view.setGameEnd();
+
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -14,8 +14,8 @@ import android.view.View;
  */
 class SampleView extends View{
     Paint paint = new Paint();
-    int playerX;  //スタート位置
-    int playerVX = -10;  //上に10ずつ動く
+    int playerY;  //スタート位置
+    int playerVX = -50;  //上に10ずつ動く
     Bitmap taxi;
     int width;
     int height;
@@ -28,7 +28,7 @@ class SampleView extends View{
         viewWidth = getWidth();
         viewHeight = getHeight();
 
-        playerX = viewHeight;
+        playerY = viewHeight;
 
     }
 
@@ -55,19 +55,25 @@ class SampleView extends View{
         height = taxi.getHeight();
     }
 
+    int playerX = 100;
     @Override
     public void onDraw(Canvas c){
         //数値処理
-        playerX += playerVX;
+        playerY += playerVX;
 
-        //描画処理
-        c.drawBitmap(taxi, viewWidth / 2 - width / 2 , playerX,  paint);
+        if(playerY < viewHeight / 2) {
+            playerY = viewHeight;
+//            playerX = 300;
+        }
+        c.drawBitmap(taxi, playerX, playerY, paint);
 
-        //ループ処理（onDrawを実行）
-        if (playerX> - height) {
-           // スピードの調整（ミリ秒）
+        if(!isEnd) {
             postInvalidateDelayed(50);
         }
+    }
 
+    boolean isEnd = false;
+    public void setGameEnd() {
+        this.isEnd = true;
     }
 }
